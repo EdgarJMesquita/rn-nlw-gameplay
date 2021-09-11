@@ -70,6 +70,7 @@ export function Home() {
 
         <View style={styles.content}> 
           <ListHeader title="Partidas agendadas" subtitle="Total 7"/>
+          
           <FlatList 
             data={appointments}
             keyExtractor={item=>item.id}
