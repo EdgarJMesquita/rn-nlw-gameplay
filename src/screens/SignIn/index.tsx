@@ -6,13 +6,17 @@ import { Background } from "../../components/Background";
 import { ButtonIcon } from "../../components/ButtonIcon";
 import { styles } from './styles';
 
+type Props = {
+  navigatio: any
+}
 
-export function SignIn(){
+export function SignIn({navigatio}:Props){
   const navigation = useNavigation();
 
   function handleSignIn() {
     const teste = StackActions.push('Home')
     navigation.dispatch(teste);
+    
   }
   
   return(
