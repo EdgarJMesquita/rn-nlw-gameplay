@@ -66,6 +66,7 @@ export function Home() {
         <CategorySelect 
           categorySelected={category}
           setCategory={handleCategorySelect}
+          
         />
 
         <View style={styles.content}> 
@@ -74,7 +75,7 @@ export function Home() {
           <FlatList 
             data={appointments}
             keyExtractor={item=>item.id}
-            renderItem={({item })=>(
+            renderItem={({ item })=>(
               <Appointment data={item}/>
             )}
             ItemSeparatorComponent={ListDivider}

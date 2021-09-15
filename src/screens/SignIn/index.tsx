@@ -14,9 +14,16 @@ export function SignIn({navigatio}:Props){
   const navigation = useNavigation();
 
   function handleSignIn() {
-    const teste = StackActions.push('Home')
-    navigation.dispatch(teste);
+
+    //   No type error =) but ugly syntax
+    const action = StackActions.push('Home')
+    navigation.dispatch(action);
+
     
+    /*  
+        An annoying type error =/
+      navigation.navigate("Home"); 
+    */
   }
   
   return(
@@ -26,7 +33,7 @@ export function SignIn({navigatio}:Props){
           source={illustrationImg} 
           style={styles.image}
           resizeMode="stretch"
-          />
+        />
 
         <View style={styles.content}>
           <Text style={styles.title}>
