@@ -24,5 +24,5 @@ export const categories = [
     id: '4',
     title: 'Treinamento',
     icon: trainingSvg
-  },
+  }
 ]

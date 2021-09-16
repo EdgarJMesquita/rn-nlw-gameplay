@@ -11,7 +11,7 @@ type CategorySelectProps = {
   hasCheckBox?: boolean;
 }
 
-export function CategorySelect({ categorySelected, setCategory, hasCheckBox=false }: CategorySelectProps){
+export function CategorySelect({ categorySelected, setCategory, hasCheckBox = false }: CategorySelectProps){
   return(
     <ScrollView 
       horizontal
@@ -24,7 +24,6 @@ export function CategorySelect({ categorySelected, setCategory, hasCheckBox=fals
           return(
             <Category 
               key={category.id} 
-              id={category.id} 
               title={category.title} 
               icon={category.icon}
               hasCheckBox={hasCheckBox}

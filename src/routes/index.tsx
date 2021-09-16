@@ -5,8 +5,10 @@ import { Background } from "../components/Background";
 
 export function Routes() {
   return(
-    <NavigationContainer>
-      <AuthRoutes />
-    </NavigationContainer>
+    <Background>
+      <NavigationContainer>
+        <AuthRoutes />
+      </NavigationContainer>
+    </Background>
   );
 }

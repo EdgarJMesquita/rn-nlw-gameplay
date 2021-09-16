@@ -8,7 +8,6 @@ import { theme } from "../../global/styles/theme";
 import { styles } from './styles';
 
 type CategoryProps = RectButtonProps & {
-  id: string;
   title: string;
   icon: React.FC<SvgProps>;
   checked?: boolean;
@@ -19,7 +18,7 @@ export function Category({
   title,
   icon:Icon,
   checked = false,
-  hasCheckBox=false,
+  hasCheckBox = false,
   ...rest
 }:CategoryProps){
   return(
