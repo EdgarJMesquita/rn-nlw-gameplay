@@ -1,14 +1,12 @@
 import React from "react";
-import { createStackNavigator } from '@react-navigation/stack';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import { Home } from "../screens/Home";
 import { SignIn } from "../screens/SignIn";
 import { AppointmentDetails } from "../screens/AppointmentDetails";
 import { AppointmentCreate } from "../screens/AppointmentCreate";
 
-import { theme } from "../global/styles/theme";
-
-const { Navigator, Screen } = createStackNavigator();
+const { Navigator, Screen } = createNativeStackNavigator();
 
 declare global {
   namespace ReactNavigation {
@@ -24,9 +22,7 @@ export function AuthRoutes() {
     <Navigator
       screenOptions={{
         headerShown: false,
-        cardStyle:{
-          backgroundColor: theme.colors.secondary100
-        }
+       
       }}
     >
       <Screen 
