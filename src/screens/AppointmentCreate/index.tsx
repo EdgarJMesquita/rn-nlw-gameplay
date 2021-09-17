@@ -2,7 +2,8 @@ import React, { useState } from 'react'
 import { View, Text } from 'react-native'
 import { Header } from '../../components/Header'
 import { CategorySelect } from '../../components/CategorySelect';
-import { RectButton } from 'react-native-gesture-handler'
+import { RectButton } from 'react-native-gesture-handler';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { styles } from './styles'
 
 export function AppointmentCreate() {
@@ -10,8 +11,13 @@ export function AppointmentCreate() {
 
   function handleCategorySelect(categoryId:string) {
     categoryId === category? setCategory('') : setCategory(categoryId);
+    AsyncStorage.setItem('@category', category);
   }
 
+  async function handleAlert() {
+    const value = await AsyncStorage.getItem('@category');
+    alert(value);
+  }
 
   return (
     <View style={styles.container}>
@@ -30,7 +36,8 @@ export function AppointmentCreate() {
       />
 
       <View style={styles.form}>
-        <RectButton>
+        <RectButton onPress={handleAlert}>
+          <Text>Testeee</Text>
           <View style={styles.select}>
             <View style={styles.image}/>
 
