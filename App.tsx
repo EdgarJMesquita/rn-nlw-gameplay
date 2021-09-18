@@ -6,7 +6,6 @@ import { Rajdhani_500Medium, Rajdhani_700Bold } from '@expo-google-fonts/rajdhan
 
 import { StatusBar } from "react-native";
 import { Routes } from "./src/routes";
-import { Background } from "./src/components/Background";
 
 export default function App(){
   const [ fontsLoaded ] = useFonts({
