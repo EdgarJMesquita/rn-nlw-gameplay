@@ -9,7 +9,11 @@ export const styles = StyleSheet.create({
     borderRadius: 8,
     color: theme.colors.heading,
     fontFamily: theme.fonts.text400,
-    fontSize: 13,
+    fontSize: 15,
     marginTop: 12,
+    padding: 15,
+    textAlignVertical: 'top',
+    borderWidth: 1,
+    borderColor: theme.colors.secondary50 
   }
 })

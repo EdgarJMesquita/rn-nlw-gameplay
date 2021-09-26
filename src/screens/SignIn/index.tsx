@@ -1,29 +1,27 @@
 import { useNavigation, StackActions } from "@react-navigation/native";
 import React from "react";
-import { View, Text, Image } from "react-native";
+import { View, Text, Image, Alert } from "react-native";
 import illustrationImg from '../../assets/illustration.png';
 import { Background } from "../../components/Background";
 import { ButtonIcon } from "../../components/ButtonIcon";
+import { useAuth } from "../../hooks/useAuth";
 import { styles } from './styles';
 
-type Props = {
-  navigatio: any
-}
 
-export function SignIn({navigatio}:Props){
+
+export function SignIn(){
   const navigation = useNavigation();
+  const { user, isLoading, signIn } = useAuth();
 
-  function handleSignIn() {
+  async function handleSignIn() {
+    try {
+      await signIn();
+    } catch (err) {
+      Alert.alert(`${err}`);
+    }
 
-    //   No type error =) but ugly syntax
-    const action = StackActions.push('Home')
-    navigation.dispatch(action);
-
-    
-    /*  
-        An annoying type error =/
-      navigation.navigate("Home"); 
-    */
+    /* const action = StackActions.push('Home')
+    navigation.dispatch(action); */
   }
   
   return(

@@ -30,12 +30,12 @@ export function Guild({ data, ...rest }:Props) {
       />
       
       <View style={styles.content}>
-          <Text style={styles.title}>
-            {data.name}
-          </Text>
-          <Text style={styles.type}>
-            {data.owner? 'Administrador' : 'Convidado'}
-          </Text>
+        <Text style={styles.title}>
+          {data.name}
+        </Text>
+        <Text style={styles.type}>
+          {data.owner? 'Administrador' : 'Convidado'}
+        </Text>
       </View>
 
       <Feather 

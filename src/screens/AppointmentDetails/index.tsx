@@ -49,15 +49,15 @@ export function AppointmentDetails() {
         style={styles.banner}
       > 
         <View style={styles.titleContainer}>
-        <Text style={styles.title}>
-          Lendários
-        </Text>
+          <Text style={styles.title}>
+            Lendários
+          </Text>
 
-        <Text style={styles.subtitle}>
-          É hoje que vamos chegar ao challenger sem perder uma partida da md10
-        </Text>
+          <Text style={styles.subtitle}>
+            É hoje que vamos chegar ao challenger sem perder uma partida da md10
+          </Text>
         </View>
-        </ImageBackground>
+      </ImageBackground>
       
       <ListHeader
         title="Jogadores"

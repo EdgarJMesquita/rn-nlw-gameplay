@@ -6,6 +6,8 @@ import { Rajdhani_500Medium, Rajdhani_700Bold } from '@expo-google-fonts/rajdhan
 
 import { StatusBar } from "react-native";
 import { Routes } from "./src/routes";
+import { Background } from "./src/components/Background";
+import { AuthContextProvider } from "./src/context/auth";
 
 export default function App(){
   const [ fontsLoaded ] = useFonts({
@@ -20,13 +22,15 @@ export default function App(){
   }
   
   return(
-    <>
+    <Background>
       <StatusBar 
         barStyle="light-content"
         backgroundColor="transparent"
         translucent
       />
-      <Routes />
-    </>
+      <AuthContextProvider>
+        <Routes />
+      </AuthContextProvider>
+    </Background>
   );
 }

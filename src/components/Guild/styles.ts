@@ -11,13 +11,15 @@ export const styles = StyleSheet.create({
 
   content: {
     flex: 1,
-    justifyContent: 'flex-end'
+    justifyContent: 'center',
+    marginLeft: 20
   },
 
   title: {
     fontFamily: theme.fonts.title700,
     color: theme.colors.heading,
     fontSize: 18,
+    marginBottom: 4
   },
 
   type: {

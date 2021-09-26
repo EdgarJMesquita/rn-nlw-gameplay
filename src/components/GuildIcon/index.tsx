@@ -4,7 +4,7 @@ import { SvgProps } from "react-native-svg";
 import { styles } from './styles'; 
 
 type Props = {
-  icon: string;
+  icon?: string;
 }
 
 export function GuildIcon({icon}:Props) {

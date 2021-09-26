@@ -18,6 +18,7 @@ export function CategorySelect({ categorySelected, setCategory, hasCheckBox = fa
       style={styles.container}
       showsHorizontalScrollIndicator={false}
       contentContainerStyle={{paddingRight: 40}}
+      fadingEdgeLength={100}
     >
       {
         categories.map(category=>{
