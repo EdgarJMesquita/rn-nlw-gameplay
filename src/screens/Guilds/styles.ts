@@ -5,7 +5,8 @@ export const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    paddingTop: 24
+    paddingTop: 24,
+    justifyContent: 'center'
   },
 
   guilds: {

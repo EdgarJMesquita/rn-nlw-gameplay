@@ -5,6 +5,7 @@ import { GuildIcon } from '../GuildIcon';
 import { styles } from './styles';
 import { theme } from '../../global/styles/theme';
 import { SvgProps } from 'react-native-svg';
+import { api } from '../../services/api';
 
 export type GuildProps = {
   id: string;
@@ -18,6 +19,7 @@ type Props = TouchableOpacityProps & {
 }
 
 export function Guild({ data, ...rest }:Props) {
+
   return (
     <TouchableOpacity 
       style={styles.container}
@@ -26,7 +28,8 @@ export function Guild({ data, ...rest }:Props) {
     >
 
       <GuildIcon
-        icon={data.icon}
+        iconID={data.icon}
+        guildId={data.id}
       />
       
       <View style={styles.content}>

@@ -18,7 +18,7 @@ declare global {
   }
 }
 
-export function AuthRoutes() {
+export function AppRoutes() {
   return(
     <Navigator
       screenOptions={{

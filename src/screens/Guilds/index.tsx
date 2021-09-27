@@ -1,8 +1,10 @@
-import React from 'react'
-import { FlatList, View } from 'react-native'
+import React, { useEffect, useState } from 'react'
+import { ActivityIndicator, FlatList, View } from 'react-native'
 import { Background } from '../../components/Background'
 import { Guild, GuildProps } from '../../components/Guild'
 import { ListDivider } from '../../components/ListDivider'
+import { theme } from '../../global/styles/theme'
+import { api } from '../../services/api'
 import { styles } from './styles';
 
 type Props = {
@@ -10,78 +12,39 @@ type Props = {
 }
 
 export function Guilds({handleGuildSelect}:Props) {
-  const guilds = [
-    {
-      id: '1',
-      name: 'Overwatch',
-      icon: 'https://maxcdn.icons8.com/Color/PNG/512/Logos/overwatch-512.png',
-      owner: true
-    },
-    {
-      id: '2',
-      name: 'Archeage',
-      icon: 'https://vectorified.com/images/archeage-icon-31.png',
-      owner: true
-    },
-    {
-      id: '3',
-      name: 'Overwatch',
-      icon: 'https://maxcdn.icons8.com/Color/PNG/512/Logos/overwatch-512.png',
-      owner: true
-    },
-    {
-      id: '4',
-      name: 'Archeage',
-      icon: 'https://vectorified.com/images/archeage-icon-31.png',
-      owner: true
-    },
-    {
-      id: '5',
-      name: 'GuildWars',
-      icon: 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.S-NLaCL5wvyEdkDu-HZJVQHaDu%26pid%3DApi&f=1',
-      owner: true
-    },
-    {
-      id: '6',
-      name: 'Overwatch',
-      icon: 'https://maxcdn.icons8.com/Color/PNG/512/Logos/overwatch-512.png',
-      owner: true
-    },
-    {
-      id: '7',
-      name: 'Archeage',
-      icon: 'https://vectorified.com/images/archeage-icon-31.png',
-      owner: true
-    },
-    {
-      id: '8',
-      name: 'Overwatch',
-      icon: 'https://maxcdn.icons8.com/Color/PNG/512/Logos/overwatch-512.png',
-      owner: true
-    },
-    {
-      id: '9',
-      name: 'Archeage',
-      icon: 'https://vectorified.com/images/archeage-icon-31.png',
-      owner: true
-    },
-    {
-      id: '10',
-      name: 'GuildWars',
-      icon: 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.S-NLaCL5wvyEdkDu-HZJVQHaDu%26pid%3DApi&f=1',
-      owner: false
+  const [guilds, setGuilds] = useState<GuildProps[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  async function getUserGuilds() {
+    try {
+      const { data } = await api.get('/users/@me/guilds');
+      setGuilds(data);
+      
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setIsLoading(false);
     }
-  ]
+  }
+
+  useEffect(() => {
+    getUserGuilds();
+  }, [])
+
   return (
     <Background>
       <View style={styles.container}>
-        <FlatList 
+        {
+          isLoading? 
+          <ActivityIndicator size="large" color={theme.colors.primary}/>
+          :
+          <FlatList 
           data={guilds}
           keyExtractor={item=>item.id}
           renderItem={({ item })=>(
             <Guild 
-              onPress={()=>handleGuildSelect(item)}
-              data={item}
+            onPress={()=>handleGuildSelect(item)}
+            data={item}
             />
             )}
           ItemSeparatorComponent={()=><ListDivider/>}
@@ -89,7 +52,8 @@ export function Guilds({handleGuildSelect}:Props) {
           contentContainerStyle={{paddingVertical: 69}}
           ListHeaderComponent={()=><ListDivider isCentered/>}
           fadingEdgeLength={300}
-        />
+          />
+        }
       </View>
     </Background>
   )
