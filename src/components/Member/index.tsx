@@ -6,7 +6,7 @@ import { styles } from './styles'
 
 export type MemberProps = {
   id: string;
-    userName: string;
+    username: string;
     avatar_url: string;
     status: string;
 }
@@ -15,7 +15,7 @@ type Props = {
   data: MemberProps;
 }
 
-export function Member({ data:{ userName, avatar_url, status }}:Props) {
+export function Member({ data:{ username, avatar_url, status }}:Props) {
   const isOnline = status === 'online';
   const { on, primary } = theme.colors;
 
@@ -27,7 +27,7 @@ export function Member({ data:{ userName, avatar_url, status }}:Props) {
       
       <View style={styles.content}>
         <Text style={styles.title}>
-          { userName }
+          { username }
         </Text>
 
         <View style={styles.status}>

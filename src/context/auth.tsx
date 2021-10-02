@@ -4,6 +4,7 @@ import * as AuthSession from 'expo-auth-session';
 import { api } from '../services/api';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { COLLECTION_USER, COLLECTION_APPOINTMENTS } from '../storage';
+import { LogoutModal } from '../components/LogoutModal';
 
 const { SCOPE } = process.env;
 const { CLIENT_ID } = process.env;
@@ -35,6 +36,7 @@ type ContextProps = {
   user: User | undefined;
   isLoading: boolean;
   signIn: ()=>Promise<void>;
+  setIsModalOpen: (value:boolean)=>void;
 }
 
 type AuthorizationResponse = AuthSession.AuthSessionResult & {
@@ -50,6 +52,7 @@ export const AuthContext = createContext({} as ContextProps);
 export function AuthContextProvider({children}:Props){
   const [user, setUser] = useState<User>();
   const [isLoading, setIsLoading] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false)
 
   async function signIn(){
     try {
@@ -98,6 +101,16 @@ export function AuthContextProvider({children}:Props){
     }
   }
 
+  async function logout(){
+    try {
+      const keys = await AsyncStorage.getAllKeys();
+      await AsyncStorage.multiRemove(keys);
+      setUser(undefined);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   useEffect(() => {
     loadUserStorageData();
   }, [])
@@ -106,9 +119,11 @@ export function AuthContextProvider({children}:Props){
     <AuthContext.Provider value={{
       user,
       isLoading,
-      signIn
+      signIn,
+      setIsModalOpen
     }}>
       {children}
+      <LogoutModal logout={logout} setIsModalOpen={setIsModalOpen} visible={isModalOpen}/>
     </AuthContext.Provider>
   );
 }

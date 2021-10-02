@@ -1,29 +1,28 @@
 import React from "react";
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import { Home } from "../screens/Home";
-import { SignIn } from "../screens/SignIn";
 import { AppointmentDetails } from "../screens/AppointmentDetails";
 import { AppointmentCreate } from "../screens/AppointmentCreate";
-import { Guilds } from "../screens/Guilds";
 
-const { Navigator, Screen } = createNativeStackNavigator();
+import { createNativeStackNavigator, NativeStackScreenProps } from '@react-navigation/native-stack';
+import { AppointmentProps } from "../components/Appointment";
 
-declare global {
-  namespace ReactNavigation {
-    interface RootParamList {
-      Home: string;
-      SignIn: string;
-    }
-  }
+type RootParamList = {
+  Home: undefined,
+  AppointmentDetails: { guildSelected: AppointmentProps },
+  AppointmentCreate: undefined
 }
+export type NavigationProps = NativeStackScreenProps<RootParamList>
+
+export type AppointmentRouteProps = NativeStackScreenProps<RootParamList,'AppointmentDetails'> 
+
+const { Navigator, Screen } = createNativeStackNavigator<RootParamList>();
 
 export function AppRoutes() {
   return(
     <Navigator
       screenOptions={{
         headerShown: false,
-       
       }}
     > 
       <Screen 
@@ -33,7 +32,7 @@ export function AppRoutes() {
 
       <Screen
         name="AppointmentDetails"
-        component={AppointmentDetails} 
+        component={AppointmentDetails}
       />
 
       <Screen

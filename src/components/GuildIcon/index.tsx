@@ -1,12 +1,11 @@
 import React from "react";
 import { Image, View } from "react-native";
 import { SvgProps } from "react-native-svg";
-import DiscordIcon from '../../assets/discord.png';
 import { styles } from './styles'; 
 
 type Props = {
-  iconID: string;
-  guildId: string;
+  iconID?: SvgProps | null;
+  guildId?: string;
 }
 
 export function GuildIcon({iconID, guildId}:Props) {

@@ -28,8 +28,8 @@ export function CategorySelect({ categorySelected, setCategory, hasCheckBox = fa
               title={category.title} 
               icon={category.icon}
               hasCheckBox={hasCheckBox}
-              checked={category.id === categorySelected}
-              onPress={()=>setCategory(category.id)}
+              checked={category.title=== categorySelected}
+              onPress={()=>setCategory(category.title)}
             />
           )
         })

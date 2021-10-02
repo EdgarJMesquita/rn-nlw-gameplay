@@ -17,13 +17,13 @@ import { GuildProps } from '../../components/Guild';
 import uuid from 'react-native-uuid';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { COLLECTION_APPOINTMENTS } from '../../storage';
-import { StackActions, useNavigation } from '@react-navigation/native';
+import { NavigationProps } from '../../routes/app.routes';
 
-export function AppointmentCreate() {
+export function AppointmentCreate({navigation}:NavigationProps) {
+  
   const [category, setCategory] = useState('');
   const [openGuildsModal, setOpenGuildsModal] = useState(false);
   const [guild, setGuild] = useState<GuildProps>({}as GuildProps);
-  const navigation =useNavigation();
 
   const [ day, setDay ] = useState('');
   const [ month, setMonth ] = useState('');
@@ -60,10 +60,7 @@ export function AppointmentCreate() {
     const updatedAppointments = [...appointments, newAppointment];
     await AsyncStorage.setItem(COLLECTION_APPOINTMENTS, JSON.stringify(updatedAppointments));
 
-    alert(JSON.stringify(updatedAppointments));
-
-    const action = StackActions.push('Home');
-    navigation.dispatch(action);
+    navigation.navigate('Home');
   }
 
   return (

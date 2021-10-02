@@ -39,19 +39,19 @@ export function Guilds({handleGuildSelect}:Props) {
           <ActivityIndicator size="large" color={theme.colors.primary}/>
           :
           <FlatList 
-          data={guilds}
-          keyExtractor={item=>item.id}
-          renderItem={({ item })=>(
-            <Guild 
-            onPress={()=>handleGuildSelect(item)}
-            data={item}
-            />
+            data={guilds}
+            keyExtractor={item=>item.id}
+            renderItem={({ item })=>(
+              <Guild 
+                onPress={()=>handleGuildSelect(item)}
+                data={item}
+              />
             )}
-          ItemSeparatorComponent={()=><ListDivider/>}
-          style={styles.guilds}
-          contentContainerStyle={{paddingVertical: 69}}
-          ListHeaderComponent={()=><ListDivider isCentered/>}
-          fadingEdgeLength={300}
+            ItemSeparatorComponent={()=><ListDivider/>}
+            style={styles.guilds}
+            contentContainerStyle={{paddingVertical: 69}}
+            ListHeaderComponent={()=><ListDivider isCentered/>}
+            fadingEdgeLength={300}
           />
         }
       </View>

@@ -1,4 +1,5 @@
-import { useNavigation, StackActions } from "@react-navigation/native";
+import { useNavigation, StackActions, ParamListBase } from "@react-navigation/native";
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import React from "react";
 import { View, Text, Image, Alert } from "react-native";
 import illustrationImg from '../../assets/illustration.png';
@@ -9,8 +10,8 @@ import { styles } from './styles';
 
 
 
-export function SignIn(){
-  const navigation = useNavigation();
+export function SignIn({navigation}:NativeStackScreenProps<ParamListBase>){
+  //const navigation = useNavigation();
   const { user, isLoading, signIn } = useAuth();
 
   async function handleSignIn() {
